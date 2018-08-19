@@ -1,0 +1,6 @@
+{
+    "toggleOnOff": {
+        "message": "Eklentiyi aç/kapa",
+        "description": "The label that goes with the on/off toggler"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "toggleOnOff": {
+        "message": "Toggle pager on/off",
+        "description": "The label that goes with the on/off toggler"
+    }
+}
