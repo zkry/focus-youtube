@@ -1,38 +1,41 @@
 var PAGETYPE_WATCH = "watch";
 var PAGETYPE_HOME = "home";
 
-window.onload = function() {
-  if (pageType() == PAGETYPE_HOME) {
-    // Remove the pages of recommendations
-    var interval =  window.setInterval(function() {
-      var content = document.getElementById("primary")
-      if (content) {
-        content.innerHTML = mainPageHTML()
-      }
+window.setTimeout(function() {
+  window.onload = function() {
+    if (pageType() == PAGETYPE_HOME) {
+      // Remove the pages of recommendations
+      var interval =  window.setInterval(function() {
+        var content = document.getElementById("primary")
+        if (content) {
+          content.innerHTML = mainPageHTML()
+        }
 
-      var guides = document.querySelector("ytd-guide-renderer")
-      if (guides) {
-        guides.innerHTML = ""
-      }
-    }, 1000);
+        var guides = document.querySelector("ytd-guide-renderer")
+        if (guides) {
+          guides.innerHTML = ""
+        }
+      }, 1000);
+    }
+
+    if (pageType() == PAGETYPE_WATCH) {
+      console.log("watch")
+      var interval = window.setInterval(function() {
+        // Remove the side bar
+        var sideItem = document.querySelector("ytd-watch-next-secondary-results-renderer")
+        if (sideItem) {
+          sideItem.innerHTML = ""
+        }
+
+        // Remove the comment section
+        var comments = document.querySelector("ytd-comments")
+        if (comments) {
+          comments.innerHTML = ""
+        }
+      }, 1000)
+    }
   }
-
-  if (pageType() == PAGETYPE_WATCH) {
-    var interval = window.setInterval(function() {
-      // Remove the side bar
-      var sideItem = document.querySelector("ytd-watch-next-secondary-results-renderer")
-      if (sideItem) {
-        sideItem.innerHTML = ""
-      }
-
-      // Remove the comment section
-      var comments = document.querySelector("ytd-comments")
-      if (comments) {
-        comments.innerHTML = ""
-      }
-    }, 1000)
-  }
-}
+}, 100)
 
 function pageType() {
   var href = window.location.href;
